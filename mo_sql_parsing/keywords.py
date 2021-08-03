@@ -60,7 +60,7 @@ GTE = Literal(">=").set_parser_name("gte")
 LTE = Literal("<=").set_parser_name("lte")
 LT = Literal("<").set_parser_name("lt")
 GT = Literal(">").set_parser_name("gt")
-EQ = (Literal("==") | Literal("=")).set_parser_name("eq")
+EQ = ( Literal('<==>') | Literal("==") | Literal("=")).set_parser_name("eq")
 NEQ = (Literal("!=") | Literal("<>")).set_parser_name("neq")
 
 AND = Keyword("and", caseless=True)
