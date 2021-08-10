@@ -60,7 +60,7 @@ GTE = Literal(">=").set_parser_name("gte")
 LTE = Literal("<=").set_parser_name("lte")
 LT = Literal("<").set_parser_name("lt")
 GT = Literal(">").set_parser_name("gt")
-EQ = (Literal("==") | Literal("=")).set_parser_name("eq")
+EQ = (Literal("==") | Literal("=") | Literal("<==>")).set_parser_name("eq")
 NEQ = (Literal("!=") | Literal("<>")).set_parser_name("neq")
 
 AND = Keyword("and", caseless=True)
@@ -350,6 +350,7 @@ BLOB = (Keyword("blob", caseless=True)("op") + _size).addParseAction(to_json_cal
 BYTES = (Keyword("bytes", caseless=True)("op") + _size).addParseAction(to_json_call)
 CHAR = (Keyword("char", caseless=True)("op") + _size).addParseAction(to_json_call)
 VARCHAR = (Keyword("varchar", caseless=True)("op") + _size).addParseAction(to_json_call)
+VARBINARY = (Keyword("varbinary", caseless=True)("op") + _size).addParseAction(to_json_call)
 
 DECIMAL = (
     Keyword("decimal", caseless=True)("op") + _sizes
@@ -412,4 +413,5 @@ known_types = MatchFirst([
     TIMESTAMPTZ_TYPE,
     TIMETZ_TYPE,
     VARCHAR,
+    VARBINARY,
 ])
